@@ -6,9 +6,29 @@
 	<script src="js/angular-1.4.6-min.js"></script>
 </head>
 <body>
-	<div ng-app="">
-		<p>名字：<input type="text" ng-modal="name"></p>
+	<!-- <div ng-app="" ng-init="firstName='John'">
+		<p>名字：<input type="text" ng-model="name"></p>
 		<h1>Hello {{name}}</h1>
+		<p>我的第一个表达式：{{5+5}}</p>
+		<p>我的第一个指令：姓名为<span ng-bind="firstName"></span></p>
+	</div> -->
+
+ 	<br/>
+ 	<br/>
+	<p>尝试修改以下表单</p>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		名：<input type="text" ng-model="firstName">
+		姓：<input type="text" ng-model="lastName">
+		<br/>
+		姓名：{{firstName+ " "+ lastName}}
 	</div>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.controller('myCtrl',function($scope){
+			$scope.firstName = 'John';
+			$scope.lastName = 'Doe';
+		})
+	</script>
+	
 </body>
 </html>
