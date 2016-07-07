@@ -7,12 +7,11 @@
 </head>
 <body>
 	<h3>外部文件中的控制器</h3>
-	<div ng-app="myApp" ng-controller="personCtrl">
-		First Name: <input type="text" ng-model="firstName"><br>
-		Last Name: <input type="text" ng-model="lastName"><br>
-		<br>
-		Full Name: {{firstName + " " + lastName}}
+	<div ng-app="myApp" ng-controller="namesCtrl">
+		<ul>
+			<li ng-repeat="x in names">{{x.name + ', ' +x.country }}</li>
+		</ul>
 	</div>
-	<script src="personController.js"></script>
+	<script src="js/personController.js"></script>
 </body>
 </html>
