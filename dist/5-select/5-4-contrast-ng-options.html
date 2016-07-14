@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>两者的对比-ng-repeat</title>
+	<title>两者的对比-ng-options</title>
 	<script src="../js/angular-1.4.6-min.js"></script>
 </head>
 <body>
 	<div ng-app="myApp" ng-controller="myCtrl">
 		<p>选择网站：</p>
-		<select name="" id="" ng-model="selectedSite">
-			<option value="{{x.url}}" ng-repeat="x in sites">{{x.site}}</option>
+		<select name="" id="" ng-model="selectedSite" ng-options="x.site for x in sites">
 		</select>
-		<h1>你选择的是：{{selectedSite}}</h1>
+		<h1>你选择的是：{{selectedSite.site}}</h1>
+		<p>网址为：{{selectedSite.url}}</p>
 	</div>
 	<script>
 		var app = angular.module('myApp',[]);
@@ -23,6 +23,6 @@
 			];
 		});
 	</script>
-	<p>该实例演示了使用ng-repeat指令来创建下拉列表，选中的值是一个字符串。</p>
+	<p>该实例演示了使用ng-options指令来创建下拉列表，选中的值是一个对象。</p>
 </body>
 </html>
