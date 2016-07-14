@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用对象作为数据源创建下拉列表</title>
+	<script src="../js/angular-1.4.6-min.js"></script>
+</head>
+<body>
+	<!--使用对象作为数据源创建下拉列表,选择的值在key-value对的value中，这时它是一个对象 -->
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>选择一辆车：</p>
+		<select name="" id="" ng-model="selectedCar" ng-options="x for (x,y) in cars"></select>
+		<h1>你选择的是：{{selectedCar.brand}}</h1>
+		<h2>模型：{{selectedCar.model}}</h2>
+		<h3>颜色：{{selectedCar.color}}</h3>
+
+		<p>注意选中的值是一个对象。</p>
+	</div>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.controller('myCtrl',function($scope){
+			$scope.cars = {
+				car01:{brand:"Ford",model:"Mustang",color:"red"},
+				car02:{brand:"Fiat",model:"500",color:"white"},
+				car03:{brand:"Volvo",model:"XC90",color:"black"}
+			}
+		});
+	</script>
+</body>
+</html>
