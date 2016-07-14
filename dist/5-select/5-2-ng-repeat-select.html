@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用ng-repeat创建下拉列表</title>
+	<script src="../js/angular-1.4.6-min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<select name="" id="">
+			<option value="" ng-repeat="x in names">{{x}}</option>
+		</select>
+	</div>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.controller('myCtrl',function($scope){
+			$scope.names = ['google','runoob','taobao'];
+		});
+	</script>
+	<p>该实例演示了使用ng-repeat指令来创建下拉列表。</p>
+</body>
+</html>
