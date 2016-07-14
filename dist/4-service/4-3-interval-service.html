@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>interval service</title>
+	<script src="../js/angular-1.4.6-min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>欢迎信息</p>
+		<h1>{{theTime}}</h1>
+	</div>
+
+	<br>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.controller('myCtrl',function($scope,$interval){
+			$scope.theTime = new Date().toLocaleTimeString();
+			$interval(function(){
+				$scope.theTime = new Date().toLocaleTimeString();
+			},1000);
+		});
+	</script>
+</body>
+</html>
