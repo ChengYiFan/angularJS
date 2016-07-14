@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用ng-options创建选择框</title>
+	<script src="../js/angular-1.4.6-min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<select name="" id="" ng-model="selectedName" ng-options="x for x in names">
+			
+		</select>
+	</div>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.controller('myCtrl',function($scope){
+			$scope.names = ['Google','Runoob','Taobao'];
+		});
+	</script>
+	<p>该实例演示了ng-options指令的使用。</p>
+</body>
+</html>
