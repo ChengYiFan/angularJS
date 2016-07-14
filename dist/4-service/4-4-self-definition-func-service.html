@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义服务</title>
+	<script src="../js/angular-1.4.6-min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>在控制器中使用自定义服务，用于转换16进制数：</p>
+		<p>255的16进制是：</p>
+		<h1>{{hex}}</h1>
+
+		<p>在过滤器中使用自定义服务：</p>
+		<h1>{{255 | myFormat}}</h1>
+	</div>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.service('hexafy',function(){
+			this.myFunc = function(x){
+				return x.toString(16);
+			}
+		});
+		app.controller('myCtrl',function($scope,hexafy){
+			$scope.hex = hexafy.myFunc(255);
+		})
+
+		app.filter('myFormat',['hexafy',function(hexafy){
+			return function(x){
+				return hexafy.myFunc(x);
+			}
+		}]);
+	</script>
+</body>
+</html>
