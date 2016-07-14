@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>两者的对比-ng-repeat</title>
+	<script src="../js/angular-1.4.6-min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<p>选择网站：</p>
+		<select name="" id="" ng-model="selectedSite">
+			<option value="{{x.url}}" ng-repeat="x in sites">{{x.site}}</option>
+		</select>
+		<h1>你选择的是：{{selectedSite}}</h1>
+	</div>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.controller('myCtrl',function($scope){
+			$scope.sites = [
+				{site:"google",url:"http://www.google,com"},
+				{site:"runoo",url:"http://www.runoob.com"},
+				{site:"taobao",url:"http://www.taobao.com"}
+			];
+		});
+	</script>
+	<p>该实例演示了使用ng-repeat指令来创建下拉列表，选中的值是一个字符串。</p>
+</body>
+</html>
