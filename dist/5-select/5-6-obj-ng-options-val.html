@@ -9,7 +9,8 @@
 	<!--使用对象作为数据源创建下拉列表,选择的值在key-value对的value中，这时它是一个对象 -->
 	<div ng-app="myApp" ng-controller="myCtrl">
 		<p>选择一辆车：</p>
-		<select name="" id="" ng-model="selectedCar" ng-options="x for (x,y) in cars"></select>
+		<!-- <select name="" id="" ng-model="selectedCar" ng-options="x for (x,y) in cars"></select> -->
+		<select name="" id="" ng-model="selectedCar" ng-options="y.brand for (x,y) in cars"></select>
 		<h1>你选择的是：{{selectedCar.brand}}</h1>
 		<h2>模型：{{selectedCar.model}}</h2>
 		<h3>颜色：{{selectedCar.color}}</h3>

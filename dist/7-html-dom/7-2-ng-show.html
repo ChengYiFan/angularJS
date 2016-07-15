@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-show指令</title>
+	<script src="../js/angular-1.4.6-min.js"></script>
+</head>
+<body>
+	<div ng-app="" ng-init="hour=13">
+		<p ng-show="true">我是可见的。</p>
+		<p ng-show="false">我是不可见的。</p>
+		<p ng-show="hour > 10">我是可见的。</p>
+		<p ng-hide="true">我是不可见的。。。。</p>
+		<p ng-hide="false">我是可见的。。。。</p>
+	</div>
+</body>
+</html>
