@@ -3,10 +3,72 @@
 <head>
 	<meta charset="UTF-8">
 	<title>angularJS Bootstrap</title>
-	<link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/angular-1.4.6-min.js"></script>
 </head>
-<body>
+<body ng-app="myApp" ng-controller="userCtrl">
 	<!-- AngularJS 的首选样式表是Twitter Bootstrap -->
+	<div class="container">
+		<h3>Users</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>编辑</th>
+					<th>名</th>
+					<th>姓</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="user in users">
+					<td>
+						<button class="btn" ng-click="editUser(user.id)">
+							<span class="glyphicon glyphicon-pencil">&nbsp;编辑</span>
+						</button>
+					</td>
+					<td>{{user.fName}}</td>
+					<td>{{user.lName}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<button class="btn btn-success" ng-click="editUser('new')">
+			<span class="glyphicon glyphicon-user">&nbsp;创建新用户</span>
+		</button>
+		<hr>
+
+		<h3 ng-show="edit">Create New User:</h3>
+		<h3 ng-hide="edit">Edit User:</h3>
+
+		<form action="" class="form-horizontal">
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">First Name:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="fName" ng-disabled="!edit" placeholder="First Name">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">Last Name:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="lName" ng-disabled="!edit" placeholder="Last Name">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">Password:</label>
+				<div class="col-sm-10">
+					<input type="password" ng-model="passw1" placeholder="Password">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">Repeat:</label>
+				<div class="col-sm-10">
+					<input type="password" ng-model="passw2" placeholder="Repeat Password">
+				</div>
+			</div>
+		</form>
+		<hr>
+		<button class="btn btn-success" ng-disabled="error || incomplete">
+			<span class="glyphicon glyphicon-save">保存修改</span>
+		</button>
+	</div>
 </body>
 </html>
