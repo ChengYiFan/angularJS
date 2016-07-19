@@ -7,7 +7,7 @@
 	<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular-animate.min.js"></script>
 	<style>
 		div{
-			transition:all linear 0.5s;
+			/*transition:all linear 0.5s;*/
 			background-color:lightblue;
 			height:100px;
 			width:100%;
@@ -15,12 +15,15 @@
 			top:0;
 			left:0;
 		}
+		@keyframes myChange{
+			from{
+				height:100px;
+			}to{
+				height:0;
+			}
+		}
 		.ng-hide{
-			height:0;
-			width:0;
-			background-color:transparent;
-			top:-200px;
-			left:200px;
+			animation:0.5s myChange;
 		}
 	</style>
 </head>
