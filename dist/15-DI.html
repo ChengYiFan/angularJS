@@ -3,8 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>angularJS 依赖注入</title>
+	<script src="js/angular-1.4.6-min.js"></script>
 </head>
 <body>
-	
+	<h2>AngularJS 简单应用</h2>
+	<div ng-app="mainApp" ng-controller="CalcController">
+		<p>输入一个数字：
+			<input type="number" ng-model="number">
+		</p>
+		<button ng-click="square()">X <sup>2</sup></button>
+		<p>结果：{{result}}</p>
+	</div>
+	<script>
+		var mainApp = angular.module("mainApp",[]);
+		mainApp.config(function($provide){
+			$provide.provider('MathService',function(){
+				this.$get = function(){
+					var factory = {};
+				}
+			})
+		})
+	</script>
 </body>
 </html>
