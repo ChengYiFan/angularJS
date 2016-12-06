@@ -1,11 +1,12 @@
-这是Angular.js入门练习的demos。版本为Angular 1。
+这是Angular.js入门练习的demos。此demo版本为Angular 1。
+
 Angular JS 是一个JavaScript框架，通过指令扩展了HTML，且通过表达式绑定数据到HTML。
 
 ## Angular JS 扩展了HTML
-AngularJS 通过 ng-directives 扩展了 HTML。
-ng-app 指令定义一个 AngularJS 应用程序。
-ng-model 指令把元素值（比如输入域的值）绑定到应用程序。
-ng-bind 指令把应用程序数据绑定到 HTML 视图。
+- AngularJS 通过 ng-directives 扩展了 HTML。
+- ng-app 指令定义一个 AngularJS 应用程序。
+- ng-model 指令把元素值（比如输入域的值）绑定到应用程序。
+- ng-bind 指令把应用程序数据绑定到 HTML 视图。
 
 ## 使用案例
 
@@ -36,7 +37,7 @@ ng-bind 指令把应用程序数据绑定到 HTML 视图。
 </body>
 </html>
 ```
-Angular JS 模块(Module) 定义了Angular JS应用
-Angular JS 控制器(controller) 用于控制 Angular JS 应用
-ng-app 指令定义了应用
-ng-controller定义了控制器
+* Angular JS 模块(Module) 定义了Angular JS应用
+* Angular JS 控制器(controller) 用于控制 Angular JS 应用
+* ng-app 指令定义了应用
+* ng-controller定义了控制器
