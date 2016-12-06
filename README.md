@@ -18,8 +18,6 @@ ng-bind 指令把应用程序数据绑定到 HTML 视图。
 	<script src="js/angular-1.4.6-min.js"></script>
 </head>
 <body>
- 	<br/>
- 	<br/>
 	<p>尝试修改以下表单</p>
 	<div ng-app="myApp" ng-controller="myCtrl">
 		名：<input type="text" ng-model="firstName">
