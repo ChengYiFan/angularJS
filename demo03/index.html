@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>angularJS-创建自定义指令</title>
+	<title>angularJS ng-model指令</title>
 	<script src="../js/angular-1.4.6-min.js"></script>
 </head>
-<body ng-app="myApp">
-	<runoob-directive></runoob-directive>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		名字：<input type="text" ng-model="name">
+	</div>
 	<script>
 		var app = angular.module("myApp", []);
-		app.directive("runoobDirective", function() {
-    		return {
-        		template : "<h1>自定义指令!</h1>"
-    		};
+		app.controller("myCtrl", function($scope) {
+    		$scope.name = "Cynthia";
 		});
 	</script>
 </body>

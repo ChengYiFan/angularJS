@@ -85,13 +85,31 @@ Angular JS 将在表达式书写的位置“输出”数据。
 </body>
 ```
 Angular JS指令用于扩展HMTL属性，带有前缀ng-。除了自定义指令，常用的有以下几种：
-1. ng-app指令初始化一个AngularJS应用程序
-1. ng-init指令初始化应用程序数据
-1. ng-model指令把元素值（比如输入域的值）绑定到应用程序。
-1. ng-repeat指令会重复一个HTML元素，用在一个对象数组上。
+* ng-app指令初始化一个AngularJS应用程序
+* ng-init指令初始化应用程序数据
+* ng-model指令把元素值（比如输入域的值）绑定到应用程序。
+* ng-repeat指令会重复一个HTML元素，用在一个对象数组上。
 
 AngularJS完美支持数据库的CRUD（增加create、读取read、更新Update、删除Delete)应用程序。
 
+## Demo03: ng-model指令
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo03/index.html)
+
+ng-model指令 用于绑定应用程序数据到HTML控制器(input,select,textarea)的值。
+
+```html
+<div ng-app="myApp" ng-controller="myCtrl">
+	名字：<input type="text" ng-model="name">
+</div>
+<script>
+	var app = angular.module("myApp", []);
+	app.controller("myCtrl", function($scope) {
+		$scope.name = "Cynthia";
+	});
+</script>
+```
+ng-model指令 可以将输入域的值与AngularJS创建的变量绑定。
 
 
 
