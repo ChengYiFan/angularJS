@@ -165,3 +165,33 @@ ng-controller指令定义了应用程序控制器。控制器是JavaScript对象
 </script>
 ```
 
+## Demo06: 过滤器
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo06/index.html)
+
+AngularJS过滤器可用于转换数据。
+
+* currency格式化数字为货币格式；
+* filter从数组项中选择一个子集；
+* lowercase格式化字符串为小写；
+* orderBy根据某个表达式排列数组；
+* uppercase格式化字符串为大写。
+
+```html
+<div ng-app="myApp" ng-controller="personCtrl">
+	<p>姓名为{{ lastName |uppercase }}</p>
+	<br>
+	<input type="number" ng-model="quantity"> <br>
+	<input type="number" ng-model="price"> <br>
+	<p>总价 = {{(quantity*price) | currency}}</p>
+</div>
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('personCtrl', function($scope){
+		$scope.lastName = 'lily';
+		$scope.quantity = 1;
+		$scope.price = 9.99;
+	});
+</script>
+```
+
