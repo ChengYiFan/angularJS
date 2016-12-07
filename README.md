@@ -147,3 +147,21 @@ Scope是模型，带有属性和方法，可以在视图和控制器中使用。
 
 [source](https://github.com/ChengYiFan/angularJS/tree/master/demo05/index.html)
 
+ng-controller指令定义了应用程序控制器。控制器是JavaScript对象，由标准的JavaScirpt对象的构造函数创建。
+
+```html
+<div ng-app="myApp" ng-controller="myCtrl">
+	名：<input type="text" ng-model="firstName">
+	姓：<input type="text" ng-model="lastName">
+	<br/>
+	姓名：{{firstName+ " "+ lastName}}
+</div>
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('myCtrl',function($scope){
+		$scope.firstName = 'John';
+		$scope.lastName = 'Doe';
+	})
+</script>
+```
+
