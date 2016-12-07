@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angularJS Scope作用域</title>
+	<script src="../js/angular-1.4.6-min.js"></script>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<h1>{{lastname}} 家族成员：</h1>
+		<ul>
+			<li>{{x in names}} {{lastname}}</li>
+		</ul>
+	</div>
+	<script>
+		var app = angular.module("myApp", []);
+		app.controller("myCtrl", function($scope,$rootScope) {
+    		$scope.names = ["Cynthia", "Tobias", "Linus"];
+    		$rootScope.lastname = "Refsnes";
+		});
+	</script>
+</body>
+</html>
