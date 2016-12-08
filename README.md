@@ -260,3 +260,43 @@ AngularJS $interval 服务对应了 JS window.setInterval函数。
 	});
 </script>
 ```
+
+##### 创建自定义服务
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo07/self-definition-func-service.html)
+
+可以创建访问自定义服务，链接到你的模块中，例如创建名为hexafy的访问：
+```html
+<script>
+var app = angular.module('myApp',[]);
+app.service('hexafy',function(){
+	this.myFunc = function(x){
+		return x.toString(16);
+	}
+});
+</script>
+```
+要使用访问自定义服务，需要在定义过滤器的时候独立添加。使用自定义的服务hexafy将一个数字转换为16进制数：
+```html
+<script>
+app.controller('myCtrl',function($scope,hexafy){
+	$scope.hex = hexafy.myFunc(255);
+})
+</script>
+```
+
+##### 在过滤器中，使用自定义服务
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo07/filter-service.html)
+
+当你创建了自定义服务，并连接到你的应用上后，你可以在控制器，指令，过滤器或其他服务中使用它。在过滤器myFormat中使用服务hexafy:
+
+```html
+<script>
+app.filter('myFormat',['hexafy',function(hexafy){
+	return function(x){
+		return hexafy.myFunc(x);
+	};
+}]);
+</script>
+```
