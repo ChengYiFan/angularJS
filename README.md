@@ -195,3 +195,68 @@ AngularJS过滤器可用于转换数据。
 </script>
 ```
 
+## demo07: 服务(Service)
+
+在AngularJS 中，服务是一个函数或对象，可在你的AngularJS应用中使用。AngularJS内建了30多个服务。
+
+##### $location服务，它可以返回当前页面的URL地址。
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo07/index.html)
+
+```html
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('', function($scope, $location){
+		$scope.myUrl = $location.absUrl();
+	});
+</script>
+```
+注意$location服务是作为一个参数传递到controller中。如果要使用它，需要在controller中定义。
+
+##### $http 服务
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo07/index-http.html)
+
+$http 是 AngularJS应用中最常用的服务。服务向服务器发送请求，应用响应服务器传送过来的数据。
+
+```html
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('myCtrl',function($scope,$http){
+		$http.get("welcome.html").then(function(response){
+			$scope.myWelcome = response.data;
+		});
+	});
+</script>
+```
+##### $timeout 服务
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo07/index-timeout.html)
+
+AngularJS $timeout 服务对应了 JS window.setTimeout函数。
+```html
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('myCtrl',function($scope,$timeout){
+		$scope.myHeader = "Hello World!";
+		$timeout(function(){
+			$scope.myHeader = "How are you today?";
+		},2000);
+	});
+</script>
+```
+
+##### $interval 服务
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo07/index-interval.html)
+
+AngularJS $interval 服务对应了 JS window.setInterval函数。
+```html
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('myCtrl',function($scope,$interval){
+		$scope.theTime = new Date().toLocaleTimeString();
+		$interval(function(){
+			$scope.theTime = new Date().toLocaleTimeString();
+		},1000);
+	});
+</script>
+```
