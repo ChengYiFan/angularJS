@@ -300,3 +300,14 @@ app.filter('myFormat',['hexafy',function(hexafy){
 }]);
 </script>
 ```
+
+## demo08: 选择框(Select)
+
+AngularJS 可以使用数组或对象创建一个下拉列表选项。
+
+##### 使用ng-options 创建选择框
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo08/ng-options-select.html)
+
+在 AngularJS中我们可以使用ng-option指令来创建一个下拉列表，列表项通过对象和数组循环输出
+
