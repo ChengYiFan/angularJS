@@ -309,5 +309,29 @@ AngularJS 可以使用数组或对象创建一个下拉列表选项。
 
 [source](https://github.com/ChengYiFan/angularJS/tree/master/demo08/ng-options-select.html)
 
-在 AngularJS中我们可以使用ng-option指令来创建一个下拉列表，列表项通过对象和数组循环输出
+在 AngularJS中我们可以使用ng-option指令来创建一个下拉列表，列表项通过对象和数组循环输出，如下示例：
+
+```html
+<div ng-app="myApp" ng-controller="myCtrl">
+	<p>选择网站：</p>
+	<select name="" id="" ng-model="selectedSite" ng-options="x.site for x in sites">
+	</select>
+	<h1>你选择的是：{{selectedSite.site}}</h1>
+	<p>网址为：{{selectedSite.url}}</p>
+</div>
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('myCtrl',function($scope){
+		$scope.sites = [
+			{site:"google",url:"http://www.google,com"},
+			{site:"runoo",url:"http://www.runoob.com"},
+			{site:"taobao",url:"http://www.taobao.com"}
+		];
+	});
+</script>
+```
+
+该实例演示了使用ng-options指令来创建下拉列表，选中的值是一个对象。
+
+
 
