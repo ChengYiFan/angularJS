@@ -313,25 +313,59 @@ AngularJS 可以使用数组或对象创建一个下拉列表选项。
 
 ```html
 <div ng-app="myApp" ng-controller="myCtrl">
-	<p>选择网站：</p>
-	<select name="" id="" ng-model="selectedSite" ng-options="x.site for x in sites">
+	<select name="" id="" ng-model="selectedName" ng-options="x for x in names">		
 	</select>
-	<h1>你选择的是：{{selectedSite.site}}</h1>
-	<p>网址为：{{selectedSite.url}}</p>
 </div>
 <script>
 	var app = angular.module('myApp',[]);
 	app.controller('myCtrl',function($scope){
-		$scope.sites = [
-			{site:"google",url:"http://www.google,com"},
-			{site:"runoo",url:"http://www.runoob.com"},
-			{site:"taobao",url:"http://www.taobao.com"}
-		];
+		$scope.names = ['Google','Runoob','Taobao'];
 	});
 </script>
 ```
 
 该实例演示了使用ng-options指令来创建下拉列表，选中的值是一个对象。
 
+##### 我们也可以使用ng-repeat指令来创建下拉列表：
 
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo08/ng-repeat-select.html)
+```html
+<div ng-app="myApp" ng-controller="myCtrl">
+	<select name="" id="">
+		<option value="" ng-repeat="x in names">{{x}}</option>
+	</select>
+</div>
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('myCtrl',function($scope){
+		$scope.names = ['google','runoob','taobao'];
+	});
+</script>
+```
+
+ng-repeat指令是通过数组来循环HTML代码来创建下拉列表，但ng-options指令更适合创建下拉列表，它有以下优势：使用ng-options的选项的一个对象，ng-repeat是一个字符串。
+
+##### 使用对象作为数据源创建下拉列表
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo08/obj-ng-options.html)
+使用对象作为数据源, x 为键(key), y 为值(value):
+```html
+<div ng-app="myApp" ng-controller="myCtrl">
+	<p>选择的网站是：</p>
+	<select name="" id="" ng-model="selectedSite" ng-options="x for (x,y) in sites">	
+	</select>
+	<h1>你选择的值是：{{selectedSite}}</h1>
+</div>
+
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('myCtrl',function($scope){
+		$scope.sites = {
+			site01: "Google",
+			site02: "Runoob",
+			site03: "Taobao"
+		};
+	});
+</script>
+```
 
