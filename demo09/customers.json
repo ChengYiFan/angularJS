@@ -1,0 +1,8 @@
+{
+	"records":[
+		{"Name":"Lucy","City":"Beijing","Country":"chaoyang"},
+		{"Name":"Lily","City":"Shanghai","Country":"pudong"},
+		{"Name":"Jim","City":"Zhengzhou","Country":"zhengdong"},
+		{"Name":"Sisi","City":"Beijing","Country":"haidian"}
+	]
+}
