@@ -348,7 +348,7 @@ ng-repeat指令是通过数组来循环HTML代码来创建下拉列表，但ng-o
 ##### 使用对象作为数据源创建下拉列表
 
 [source](https://github.com/ChengYiFan/angularJS/tree/master/demo08/obj-ng-options.html)
-使用对象作为数据源, x 为键(key), y 为值(value):
+
 ```html
 <div ng-app="myApp" ng-controller="myCtrl">
 	<p>选择的网站是：</p>
@@ -368,4 +368,4 @@ ng-repeat指令是通过数组来循环HTML代码来创建下拉列表，但ng-o
 	});
 </script>
 ```
-
+使用对象作为数据源, x 为键(key), y 为值(value)。
