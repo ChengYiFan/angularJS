@@ -369,3 +369,37 @@ ng-repeat指令是通过数组来循环HTML代码来创建下拉列表，但ng-o
 </script>
 ```
 使用对象作为数据源, x 为键(key), y 为值(value)。
+
+## demo09: 表格(Table)
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo09/index.html)
+
+ng-repeat 指令可以完美的显示表格。
+```html
+<div ng-app="myApp" ng-controller="customersCtrl">
+	<table>
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>城市</th>
+				<th>区</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="x in names">
+				<td>{{x.Name}}</td>
+				<td>{{x.City}}</td>
+				<td>{{x.Country}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('customersCtrl',function($scope, $http){
+		$http.get('customers.json').success(function(response){
+			$scope.names = response.records;
+		});
+	});
+</script>
+```
