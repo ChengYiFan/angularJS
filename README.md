@@ -705,7 +705,103 @@ AngularJS 全局API用于执行常见任务的Javascript函数集合，如：
 		$scope.x4 = angular.uppercase($scope.x3);
 		$scope.x5 = angular.isString($scope.x1);
 		$scope.x6 = angular.isNumber($scope.x3);
-
 	})
 </script>
 ```
+## demo15: AngularJS Bootstrap
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo15/index.html)
+
+你可以在你的AngularJS应用中加入Twitter Bootstrap,你可以在你的<head>元素中添加如下代码：
+```html
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+```
+如果站点在国内，建议使用百度静态资源库Bootstrap，代码如下：
+```html
+<link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+```
+
+以下是一个完整的HTML实例，使用了AngularJS指令和Bootstrap类。
+```html
+<body ng-app="myApp" ng-controller="userCtrl">
+	<!-- AngularJS 的首选样式表是Twitter Bootstrap -->
+	<div class="container">
+		<h3>Users</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>编辑</th>
+					<th>名</th>
+					<th>姓</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="user in users">
+					<td>
+						<button class="btn" ng-click="editUser(user.id)">
+							<span class="glyphicon glyphicon-pencil">编辑</span>
+						</button>
+					</td>
+					<td>{{user.fName}}</td>
+					<td>{{user.lName}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<button class="btn btn-success" ng-click="editUser('new')">
+			<span class="glyphicon glyphicon-user">创建新用户</span>
+		</button>
+		<hr>
+
+		<h3 ng-show="edit">创建新用户：</h3>
+		<h3 ng-hide="edit">编辑用户：</h3>
+
+		<form action="" class="form-horizontal">
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">名:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="fName" ng-disabled="!edit" placeholder="名">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">姓:</label>
+				<div class="col-sm-10">
+					<input type="text" ng-model="lName" ng-disabled="!edit" placeholder="姓">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">密码:</label>
+				<div class="col-sm-10">
+					<input type="password" ng-model="passw1" placeholder="密码">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">重复密码:</label>
+				<div class="col-sm-10">
+					<input type="password" ng-model="passw2" placeholder="重复密码">
+				</div>
+			</div>
+		</form>
+		<hr>
+		<button class="btn btn-success" ng-disabled="error || incomplete">
+			<span class="glyphicon glyphicon-save">保存修改</span>
+		</button>
+	</div>
+
+	<script src="myUsers.js"></script>
+</body>
+```
+JavaScript代码解析
+
+* $scope.fName  模型变量（用户名）
+* $scope.IName  模型变量（用户姓）
+* $scope.passw1 模型变量（用户密码 1）
+* $scope.passw2 模型变量（用户密码 2）
+* $scope.users  模型变量（用户的数组）
+* $scope.edit   当用户点击创建用户时设置为true
+* $scope.error  如果passw1不等于passw2设置为true
+* $scope.incomplete  如果每个字段都为空(length = 0)设置为true
+* $scope.editUser 设置模型变量
+* $scope.watch 监控模型变量
+* $scope.test 验证模型变量的错误和完整性
+
