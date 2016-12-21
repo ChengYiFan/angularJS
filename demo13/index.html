@@ -7,7 +7,7 @@
 </head>
 <body>
 	<h2>Validation Example</h2>
-	<form action="" ng-app="myApp" ng-controller="validateCtrl" name="myForm">
+	<form action="" ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
 		<p>用户名：<br>
 			<input type="text" name="user" ng-model="user" required>
 			<span ng-show="myForm.user.$dirty && myForm.user.$invalid" style="color:red">

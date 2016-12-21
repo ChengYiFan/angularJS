@@ -599,7 +599,7 @@ AngularJS 表单时输入控件的集合。
 	var app = angular.module('myApp',[]);
 	app.controller('formCtrl',function($scope){
 		$scope.master = {firstName:"John",lastName:"Doe"};
-		$scope.reset = function(){
+		$scope{
 			$scope.user = angular.copy($scope.master);
 		};
 		$scope.reset();
@@ -616,3 +616,54 @@ AngularJS 表单时输入控件的集合。
 - reset()方法设置了user对象等于master对象。
 - ng-click指令调用了reset()方法，且在点击按钮时调用。
 - novalidate 属性在应用中不是必须的，但是你需要在AngularJS 表单中使用，用于重写标准的HTML5验证。
+
+## demo13: AngularJS 输入验证
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo13/index.html)
+
+AngularJS表单和控件可以验证输入的数据，并对用户输入的非法数据进行警告（客户端的验证不能确保用户输入数据的安全，所以服务端的数据验证也是必须的。）
+
+```html
+<form action="" ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
+	<p>用户名：<br>
+		<input type="text" name="user" ng-model="user" required>
+		<span ng-show="myForm.user.$dirty && myForm.user.$invalid" style="color:red">
+			<span ng-show="myForm.user.$error.required">用户名是必须的。</span>
+		</span>
+	</p>
+
+	<p>
+		邮箱：<br>
+		<input type="email" name="email" ng-model="email" required>
+		<span ng-show="myForm.email.$dirty && myForm.email.$invalid" style="color:red">
+			<span ng-show="myForm.email.$error.required">邮箱是必须的。</span>
+			<span ng-show="myForm.email.$error.email">非法的邮箱。</span>
+		</span>
+	</p>
+	
+	<p>
+		<input type="submit" ng-disabled="myForm.user.$dirty && myForm.user.&invalid || myForm.email.$dirty && myForm.email.$invalid">
+	</p>
+
+</form>
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('validateCtrl', function($scope){
+		$scope.user = 'John Doe';
+		$scope.email = 'John doe@gamil.com';
+	});
+</script>
+```
+
+HTML表单属性novalidate用于禁用浏览器默认的验证。
+
+实例解析
+
+- AngularJS ng-model 指令用于绑定输入元素到模型中
+- 模型对象有两个属性： user和email。
+- 我们使用了ng-show指令，color:red在邮件是$dirty或$invalid才显示。
+
+* $dirty  表示表单有填写记录
+* $valid  字段内容合法的
+* $invalid 字段内容是非法的
+* $pristine 表单没有填写记录
