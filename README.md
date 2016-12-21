@@ -667,3 +667,45 @@ HTML表单属性novalidate用于禁用浏览器默认的验证。
 * $valid  字段内容合法的
 * $invalid 字段内容是非法的
 * $pristine 表单没有填写记录
+
+## demo14: AngularJS API（Application Programming Interface应用程序编程接口。）
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo14/index.html)
+
+AngularJS 全局API用于执行常见任务的Javascript函数集合，如：
+
+* 比较对象
+* 迭代对象
+* 转换对象
+
+全局API函数使用angular对象进行访问。
+
+以下列出了一些通用的API函数：
+
+* angular.lowercase() 转换字符串为小写
+* angular.uppercase() 转换字符串为大写
+* angular.isString()  判断给定的对象是否为字符串，如果是返回true。
+* angular.isNumber()  判断给定的对象是否为数字，如果是返回true。
+
+```html
+<div ng-app="myApp" ng-controller="myCtrl">
+	<p>{{x1}}</p>
+	<p>{{x2}}</p>
+	<p>{{x3}}</p>
+	<p>{{x4}}</p>
+	<p>{{x5}}</p>
+	<p>{{x6}}</p>
+</div>
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('myCtrl',function($scope){
+		$scope.x1 = 'JOHN';
+		$scope.x2 = angular.lowercase($scope.x1);
+		$scope.x3 = "cynthia";
+		$scope.x4 = angular.uppercase($scope.x3);
+		$scope.x5 = angular.isString($scope.x1);
+		$scope.x6 = angular.isNumber($scope.x3);
+
+	})
+</script>
+```
