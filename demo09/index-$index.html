@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS 表格 显示序号($index)</title>
+	<script src="../js/angular-1.4.6-min.js"></script>
+	<style>
+		table,th,td{
+			border: 1px solid #ebeaec;
+			border-collapse: collapse;
+			padding: 5px;
+		}
+		tbody tr:nth-child(odd){
+			background-color: #f1f1f1;
+		}
+		tbody tr:nth-child(even){
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<p>表格显示序号可以在<td>中添加$index：</p>
+	<div ng-app="myApp" ng-controller="customersCtrl">
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>姓名</th>
+					<th>城市</th>
+					<th>区</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="x in names">
+					<td>{{ $index + 1 }}</td>
+					<td>{{x.Name}}</td>
+					<td>{{x.City}}</td>
+					<td>{{x.Country}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.controller('customersCtrl',function($scope, $http){
+			$http.get('customers.json').success(function(response){
+				$scope.names = response.records;
+			});
+		});
+	</script>
+</body>
+</html>

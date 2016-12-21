@@ -2,11 +2,22 @@
 
 Angular JS 是一个JavaScript框架，通过指令扩展了HTML，且通过表达式绑定数据到HTML。
 
+## 对AngularJS的初步认识
+- 1.扩展HTML添加动态特性，因此我们可以轻松地构建现代web应用程序。
+- 2.以你想要的方式使用。
+- 3.带你回到HTML
+- 4.声明方法
+- 5.简单
+- 6.通过双向数据绑定消除DOM操作，任何时候当模型改变时视图都会得到更新，反之亦然。
+- 7.你可以用它来构建单页Web应用程序。当你构建如路由，Ajax调用，数据绑定，缓存，历史记录和DOM操作这类的SPA应用时，会有很多的挑战。
+
 ## Angular JS 扩展了HTML
 - AngularJS 通过 ng-directives 扩展了 HTML。
 - ng-app 指令定义一个 AngularJS 应用程序。
 - ng-model 指令把元素值（比如输入域的值）绑定到应用程序。
 - ng-bind 指令把应用程序数据绑定到 HTML 视图。
+
+
 
 ## 使用案例
 
@@ -403,3 +414,61 @@ ng-repeat 指令可以完美的显示表格。
 	});
 </script>
 ```
+
+##### 使用orderBy过滤器
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo09/index-orderBy.html)
+
+排序显示，可以使用orderBy过滤器：
+```html
+<table>
+	<tr ng-repeat="x in names | orderBy : 'Country'">
+		<td>{{x.Name}}</td>
+		<td>{{x.Country}}</td>
+	</tr>
+</table>
+```
+
+##### 使用uppercase过滤器
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo09/index-uppercase.html)
+
+使用uppercase过滤器转换为大小写：
+```html
+<table>
+	<tr ng-repeat="x in names">
+		<td>{{x.Name}}</td>
+		<td>{{x.Country | uppercase}}</td>
+	</tr>
+</table>
+```
+
+##### 显示序号($index)
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo09/index-$index.html)
+
+表格显示序号可以在<td>中添加 $index:
+```html
+<table>
+	<tr ng-repeat="x in names">
+		<td>{{ $index + 1 }}</td>
+		<td>{{x.Name}}</td>
+		<td>{{x.City}}</td>
+		<td>{{x.Country}}</td>
+	</tr>
+</table>
+```
+##### 使用 $even 和 $odd
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo09/index-even.html)
+```html
+<table>
+	<tr ng-repeat="x in names">
+		<td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Name }}</td>
+		<td ng-if="$even">{{ x.Name }}</td>
+		<td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Country }}</td>
+		<td ng-if="$even">{{ x.Country }}</td>
+	</tr>
+</table>
+```
+

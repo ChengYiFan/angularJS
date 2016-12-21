@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS 表格 uppercase过滤器</title>
+	<script src="../js/angular-1.4.6-min.js"></script>
+	<style>
+		table,th,td{
+			border: 1px solid #ebeaec;
+			border-collapse: collapse;
+			padding: 5px;
+		}
+		tbody tr:nth-child(odd){
+			background-color: #f1f1f1;
+		}
+		tbody tr:nth-child(even){
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<p>使用uppercase过滤器转换为大写：</p>
+	<div ng-app="myApp" ng-controller="customersCtrl">
+		<table>
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>城市</th>
+					<th>区</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="x in names">
+					<td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Name }}</td>
+					<td ng-if="$even">{{ x.Name }}</td>
+					<td ng-if="$odd" style="background-color:#f1f1f1">{{ x.City }}</td>
+					<td ng-if="$even">{{ x.City }}</td>
+					<td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Country }}</td>
+					<td ng-if="$even">{{ x.Country }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.controller('customersCtrl',function($scope, $http){
+			$http.get('customers.json').success(function(response){
+				$scope.names = response.records;
+			});
+		});
+	</script>
+</body>
+</html>
