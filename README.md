@@ -575,3 +575,44 @@ ng-hide指令用于隐藏或显示HTML元素
 - ng-hide 指令设置<p>元素及两个输入域是否可见，根据myVar的值(true 或 false)来设置是否可见。
 - toggle() 函数用于切换myVar变量的值(true 和 false)。
 - ng-hide = "true"让元素不可见。
+
+## demo12: AngularJS 表单
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo12/index.html)
+
+AngularJS 表单时输入控件的集合。
+
+```html
+<div ng-app="myApp" ng-controller="formCtrl">
+	<form action="" novalidate>
+		First Name:<br>
+		<input type="text" ng-model="user.firstName"><br>
+		Last Name: <br>
+		<input type="text" ng-model="user.lastName"> <br><br>
+		<button ng-click="reset()">重置</button>
+	</form>
+	<p>form= {{user}}</p>
+	<p>master = {{master}}</p>
+</div>
+
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('formCtrl',function($scope){
+		$scope.master = {firstName:"John",lastName:"Doe"};
+		$scope.reset = function(){
+			$scope.user = angular.copy($scope.master);
+		};
+		$scope.reset();
+	})
+</script>
+```
+
+实例解析
+
+- ng-app指令定义了AngularJS应用。
+- ng-controller指令定义了应用控制器。
+- ng-model指令绑定了两个input元素到模型的user对象。
+- formCtrl 函数设置了master对象的初始值，并定义了reset（）方法。
+- reset()方法设置了user对象等于master对象。
+- ng-click指令调用了reset()方法，且在点击按钮时调用。
+- novalidate 属性在应用中不是必须的，但是你需要在AngularJS 表单中使用，用于重写标准的HTML5验证。
