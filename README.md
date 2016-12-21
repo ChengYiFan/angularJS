@@ -525,3 +525,53 @@ ng-hide指令用于隐藏或显示HTML元素
 	<p ng-hide="false">我是可见的。</p>
 </div>
 ```
+
+## demo11: AngularJS 事件 有自己的HTML事件指令
+
+##### 使用 ng-click 指令
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo11/index.html)
+
+```html
+<div ng-app="myApp" ng-controller="myCtrl">
+	<button ng-click="count=count+1">点我！</button>
+	<p>{{count}}</p>
+</div>
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('myCtrl',function($scope){
+		$scope.count = 0;
+	});
+</script>
+```
+
+##### 通过定义事件函数来隐藏和显示HTML元素
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo11/index-function.html)
+
+```html
+<div ng-app="myApp" ng-controller="personCtrl">
+	<button ng-click="toggle()">隐藏/显示</button>
+	<p ng-hide="myVar">
+		名：<input type="text" ng-model="firstName"><br>
+		姓：<input type="text" ng-model="lastName"><br><br>
+		姓名：{{firstName + " " + lastName}}
+	</p>
+</div>
+<script>
+	var app = angular.module('myApp',[]);
+	app.controller('personCtrl',function($scope){
+		$scope.firstName = 'John';
+		$scope.lastName = 'Doe';
+		$scope.myVar =  false;
+		$scope.toggle = function(){
+			$scope.myVar = !$scope.myVar;
+		}
+	});
+</script>
+```
+应用解析：
+- 第一部分personCtrl与控制器章节类似。应用有一个默认属性：$scope.myVar = false;
+- ng-hide 指令设置<p>元素及两个输入域是否可见，根据myVar的值(true 或 false)来设置是否可见。
+- toggle() 函数用于切换myVar变量的值(true 和 false)。
+- ng-hide = "true"让元素不可见。
