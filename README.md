@@ -472,3 +472,56 @@ ng-repeat 指令可以完美的显示表格。
 </table>
 ```
 
+## demo10: HTML DOM
+
+AngularJS 为 HTML DOM元素的属性提供了绑定应用数据的指令。
+
+##### 使用 ng-disabled 指令
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo10/index-ng-disabled.html)
+
+```html
+<div ng-app="" ng-init="mySwitch=true">
+	<p>
+		<button ng-disabled="mySwitch">点我!</button>
+	</p>
+
+	<p>
+		<input type="checkbox" ng-model="mySwitch">按钮
+	</p>
+
+	<p>
+		{{ mySwitch }}
+	</p>
+</div>
+```
+ng-disabled指令绑定应用程序数据"mySwitch" 到 HTML的 disabled属性。ng-model指令绑定"mySwitch"到HTML input checkbox元素的内容（value）。如果mySwitch 为 true,按钮将不可用。如果mySwitch为false,按钮则可用。
+
+##### 使用 ng-show 指令
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo10/index-ng-show.html)
+
+ng-show指令根据value的值来显示（隐藏）HTML元素。你也可以使用表达式来计算布尔值（true或fasle）。
+
+```html
+<div ng-app="" ng-init="hour=13">
+	<p ng-show="true">我是可见的。</p>
+	<p ng-show="false">我是不可见的。</p>
+	<p ng-show="hour > 10">我是可见的。</p>
+	<p ng-hide="true">我是不可见的。。。。</p>
+	<p ng-hide="false">我是可见的。。。。</p>
+</div>
+```
+
+##### 使用 ng-hide 指令
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo10/index-ng-hide.html)
+
+ng-hide指令用于隐藏或显示HTML元素
+
+```html
+<div ng-app="">
+	<p ng-hide="true">我是不可见的。</p>
+	<p ng-hide="false">我是可见的。</p>
+</div>
+```
