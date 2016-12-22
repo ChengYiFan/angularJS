@@ -934,3 +934,44 @@ AngularJS 提供很好的依赖注入机制。以下5个核心组件用来作为
 	
 </script>
 ```
+
+## demo18: angularJS 路由
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo18/index.html)
+
+angularJS 路由允许我们通过不同的URL访问不同的内容。
+通过AngularJS可以实现多视图的单页Web应用（single page web application, SPA)。
+通常我们的URL形式为http://runoob.com/first/page，但在单页Web应用中 AngularJS 通过 # + 标记 实现，例如：
+
+```
+http://runoob.com/#/first
+http://runoob.com/#/second
+http://runoob.com/#/third
+```
+当我们点击以上的任意一个链接时，向服务端请求的地址都是一样的（http://runoob.com/）。因为#号之后的内容在向服务端请求时会被浏览器忽略掉。所以我们就需要在客户端实现#号后面内容的功能实现。AngularJS路由就通过# + 标记帮助我们区分不同的逻辑页面并将不同的页面绑定到对应的控制器上。
+
+```html
+<body ng-app="routingDemoApp">
+	<h2>AngularJS路由应用</h2>
+	<ul>
+		<li><a href="#/">首页</a></li>
+		<li><a href="#/computers">电脑</a></li>
+		<li><a href="#/printers">打印机</a></li>
+		<li><a href="#/blabla">其他</a></li>
+	</ul>
+	<div ng-view>
+		
+	</div>
+	<script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
+	<script>
+	    angular.module('routingDemoApp',['ngRoute'])
+	    .config(['$routeProvider', function($routeProvider){
+	        $routeProvider
+	        .when('/',{template:'这是首页页面'})
+	        .when('/computers',{template:'这是电脑分类页面'})
+	        .when('/printers',{template:'这是打印机页面'})
+	        .otherwise({redirectTo:'/'});
+	    }]);
+	</script>
+</body>
+```
