@@ -859,3 +859,78 @@ ng-show和ng-hide指令用于添加或移除ng-hide class的值。其他指令�
 * ng-hide-remove(如果元素将显示)
 * ng-hide-add-active(如果元素将隐藏)
 * ng-hide-remove-active(如果元素将显示)
+
+
+## demo17: angularJS 依赖注入
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo17/index.html)
+
+##### 什么是依赖注入
+
+wiki上的解释：依赖注入（Dependency Injection,简称DI）是一种软件设计模式，在这种模式下，一个或更多的依赖（或服务）被注入（或者通过引用传递）到一个独立的对象（或客户端）中，然后成为了该客户端状态的一部分。
+
+该模式分离了客户端依赖本身行为的创建，这使得程序设计变得松耦合，并遵循了依赖反转和单一职责原则。与服务定位器模式形成直接对比的是，它允许客户端了解客户端如何使用该系统找到依赖。
+
+```
+一句话---没事你不要来找我，有事我会去找你。
+```
+
+AngularJS 提供很好的依赖注入机制。以下5个核心组件用来作为依赖注入：
+* value  是一个简单的javascript对象，用于向控制器传递值（配置阶段）
+* factory 是一个函数用于返回值。在service和controller需要时创建。通常我们使用factory函数来计算或返回值。
+* service
+* provider AngularJS中通过provider创建一个service、factory等（配置阶段）。Provider中提供了一个factory方法get(),它用于返回value/service/factory。
+* constant（常量）用来在配置阶段传递数值，注意这个常量在配置阶段是不可用的。
+
+```html
+<div ng-app = "mainApp" ng-controller = "CalcController">
+ <p>输入一个数字: <input type = "number" ng-model = "number" /></p>
+ <button ng-click = "square()">X<sup>2</sup></button>
+ <p>结果: {{result}}</p>
+</div>
+
+
+<script>
+ var mainApp = angular.module("mainApp", []);
+ 
+ mainApp.config(function($provide) {
+    $provide.provider('MathService', function() {
+       this.$get = function() {
+          var factory = {};
+          
+          factory.multiply = function(a, b) {
+             return a * b;
+          }
+          return factory;
+       };
+    });
+ });
+	
+ mainApp.value("defaultInput", 5);
+ 
+ mainApp.factory('MathService', function() {
+    var factory = {};
+    
+    factory.multiply = function(a, b) {
+       return a * b;
+    }
+    return factory;
+ });
+ 
+ mainApp.service('CalcService', function(MathService){
+    this.square = function(a) {
+       return MathService.multiply(a,a);
+    }
+ });
+ 
+ mainApp.controller('CalcController', function($scope, CalcService, defaultInput) {
+    $scope.number = defaultInput;
+    $scope.result = CalcService.square($scope.number);
+
+    $scope.square = function() {
+       $scope.result = CalcService.square($scope.number);
+    }
+ });
+	
+</script>
+```
