@@ -805,3 +805,57 @@ JavaScript代码解析
 * $scope.watch 监控模型变量
 * $scope.test 验证模型变量的错误和完整性
 
+## demo16: AngularJS 动画
+
+AngularJS 提供了动画效果，可以配合CSS使用。
+AngularJS 使用动画需要引入 angular-animate.min.js 库。
+动画是通过改变HTML元素产生的动态变化效果。
+
+```html
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular-animate.min.js"></script>
+```
+还需在应用中使用模型 ngAnimate:
+```html
+<body ng-app="ngAnimate">
+```
+##### 勾选复选框隐藏DIV动画：
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo16/index.html)
+
+```html
+<body ng-app="ngAnimate">
+	<h1>隐藏IDV：
+		<input type="checkbox" ng-model="myCheck">
+	</h1>
+	<div ng-hide="myCheck"></div>
+</body>
+```
+######  ngAnimate做了什么？
+
+ngAnimate模型可以添加或移除class。
+
+ngAnimate模型并不能使HTML元素产生动画，但是ngAnimate会监测事件，类似隐藏显示HTML元素，如果事件发生ngAnimate就会使用预定义的class来设置HTML元素的动画。
+
+AngularJS添加/移除class的指令：
+
+* ng-show
+* ng-hide
+* ng-class
+* ng-view
+* ng-include
+* ng-repeat
+* ng-if
+* ng-switch
+
+ng-show和ng-hide指令用于添加或移除ng-hide class的值。其他指令会在进入DOM时添加ng-enter类，移除DOM会添加ng-leave属性。
+
+当HTML元素位置改变时，ng-repeat指令同样可以添加ng-move类。
+
+此外，在动画完成后，HTML元素的类集合将被移除。例如：ng-hide指令会添加一下类：
+
+* ng-animate
+* ng-hide-animate
+* ng-hide-add(如果元素将被隐藏)
+* ng-hide-remove(如果元素将显示)
+* ng-hide-add-active(如果元素将隐藏)
+* ng-hide-remove-active(如果元素将显示)
