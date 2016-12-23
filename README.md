@@ -975,3 +975,13 @@ http://runoob.com/#/third
 	</script>
 </body>
 ```
+
+## demo19: angularJS 应用
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo19/index.html)
+
+```html
+
+```
+
+##### AngularJS 应用架构
