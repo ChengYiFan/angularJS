@@ -981,7 +981,17 @@ http://runoob.com/#/third
 [source](https://github.com/ChengYiFan/angularJS/tree/master/demo19/index.html)
 
 ```html
-
+<body ng-app="myNoteApp" ng-controller="myNoteCtrl">
+	<h2>我的笔记</h2>
+	<textarea name="" id="" cols="40" rows="10" ng-model="message"></textarea>
+	<p>
+		<button ng-click="save()">保存</button>
+		<button ng-click="clear()">清除</button>
+	</p>
+	<p>剩余可输入字符个数: <span ng-bind="left()"></span></p>
+	<script src="myNoteApp.js"></script>
+	<script src="myNoteCtrl.js"></script>
+</body>
 ```
 
 ##### AngularJS 应用架构
