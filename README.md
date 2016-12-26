@@ -1002,3 +1002,9 @@ http://runoob.com/#/third
 在一个应用可以有很多控制器。
 应用文件(my...App.js)定义了应用模型代码。
 一个或多个控制器文件(my...Ctrl.js)定义了控制器代码。
+
+##### 总结-它是如何工作的呢？
+ng-app 指令位于应用的根元素下。
+对于单页Web应用(single page web application,SPA),应用的根通常为<html>元素。
+一个或多个ng-controller指令定义了应用的控制器。每个控制器有他自己的作用域：：定义的HTML元素。
+AngularJS在HTML DOMContentLoaded 事件中自动开始。如果找到ng-app指令，AngularJS载入指令中的模块，并将ng-app作为应用的根进行编译。应用的根可以是整个页面，或者页面的一小部分，如果是一小部分会更快编译和执行。
