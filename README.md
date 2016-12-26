@@ -13,10 +13,10 @@ Angular JS 是一个JavaScript框架，通过指令扩展了HTML，且通过表�
 1. AngularJS使用客户端模板，它传递模板和数据到浏览器，然后在浏览器端组装。服务器的角色变成了只提供模板的静态资源和提供模板所需要的数据。
 
 ## Angular JS 扩展了HTML
-- AngularJS 通过 ng-directives 扩展了 HTML。
-- ng-app 指令定义一个 AngularJS 应用程序。
-- ng-model 指令把元素值（比如输入域的值）绑定到应用程序。
-- ng-bind 指令把应用程序数据绑定到 HTML 视图。
+1. AngularJS 通过 ng-directives 扩展了 HTML。
+1. ng-app 指令定义一个 AngularJS 应用程序。
+1. ng-model 指令把元素值（比如输入域的值）绑定到应用程序。
+1. ng-bind 指令把应用程序数据绑定到 HTML 视图。
 
 
 
