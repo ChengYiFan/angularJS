@@ -995,3 +995,10 @@ http://runoob.com/#/third
 ```
 
 ##### AngularJS 应用架构
+
+以上实例是一个完整的AngularJS单页Web应用(single page web application,SPA)。
+<html>元素包含了AngularJS应用(ng-appp=)。
+<div>元素定义了AngularJS控制器的作用域(ng-controller=)。
+在一个应用可以有很多控制器。
+应用文件(my...App.js)定义了应用模型代码。
+一个或多个控制器文件(my...Ctrl.js)定义了控制器代码。
