@@ -3,13 +3,14 @@
 Angular JS 是一个JavaScript框架，通过指令扩展了HTML，且通过表达式绑定数据到HTML。
 
 ## 对AngularJS的初步认识
-- 1.扩展HTML添加动态特性，因此我们可以轻松地构建现代web应用程序。
-- 2.以你想要的方式使用。
-- 3.带你回到HTML
-- 4.声明方法
-- 5.简单
-- 6.通过双向数据绑定消除DOM操作，任何时候当模型改变时视图都会得到更新，反之亦然。
-- 7.你可以用它来构建单页Web应用程序。当你构建如路由，Ajax调用，数据绑定，缓存，历史记录和DOM操作这类的SPA应用时，会有很多的挑战。
+-1.扩展HTML添加动态特性，因此我们可以轻松地构建现代web应用程序。
+-2.以你想要的方式使用。
+-3.带你回到HTML
+-4.声明方法
+-5.简单
+-6.通过双向数据绑定消除DOM操作，任何时候当模型改变时视图都会得到更新，反之亦然。
+-7.你可以用它来构建单页Web应用程序。当你构建如路由，Ajax调用，数据绑定，缓存，历史记录和DOM操作这类的SPA应用时，会有很多的挑战。
+-8.AngularJS使用客户端模板，它传递模板和数据到浏览器，然后在浏览器端组装。服务器的角色变成了只提供模板的静态资源和提供模板所需要的数据。
 
 ## Angular JS 扩展了HTML
 - AngularJS 通过 ng-directives 扩展了 HTML。
@@ -976,7 +977,7 @@ http://runoob.com/#/third
 </body>
 ```
 
-## demo19: angularJS 应用
+## demo19: angularJS 简单应用-我的笔记
 
 [source](https://github.com/ChengYiFan/angularJS/tree/master/demo19/index.html)
 
