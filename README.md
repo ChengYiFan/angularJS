@@ -12,10 +12,13 @@ Angular JS 是一个JavaScript框架，通过指令扩展了HTML，且通过表�
 1. 你可以用它来构建单页Web应用程序。当你构建如路由，Ajax调用，数据绑定，缓存，历史记录和DOM操作这类的SPA应用时，会有很多的挑战。
 1. AngularJS使用客户端模板，它传递模板和数据到浏览器，然后在浏览器端组装。服务器的角色变成了只提供模板的静态资源和提供模板所需要的数据。
 
-## Angular JS 扩展了HTML
+## Angular JS 指令扩展了HTML
+
+AngularJS最优秀的部分之一是你可以把你写的模板当成HTML。因为在框架的核心层，已经包括了一个强大的DOM转换引擎，可以让你扩展HTML语法，因此你才可以这样做。
 1. AngularJS 通过 ng-directives 扩展了 HTML。
 1. ng-app 指令定义一个 AngularJS 应用程序。
-1. ng-model 指令把元素值（比如输入域的值）绑定到应用程序。
+1. ng-controller是用来指定哪个控制器来服务哪个视图。
+1. ng-model 指令把元素值（比如输入框的值）绑定到模型部分。
 1. ng-bind 指令把应用程序数据绑定到 HTML 视图。
 
 
