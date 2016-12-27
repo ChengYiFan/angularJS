@@ -1001,14 +1001,87 @@ http://runoob.com/#/third
 ##### AngularJS 应用架构
 
 以上实例是一个完整的AngularJS单页Web应用(single page web application,SPA)。
-<html>元素包含了AngularJS应用(ng-appp=)。
-<div>元素定义了AngularJS控制器的作用域(ng-controller=)。
-在一个应用可以有很多控制器。
-应用文件(my...App.js)定义了应用模型代码。
-一个或多个控制器文件(my...Ctrl.js)定义了控制器代码。
+- <html>元素包含了AngularJS应用(ng-appp=)。
+- <div>元素定义了AngularJS控制器的作用域(ng-controller=)。
+- 在一个应用可以有很多控制器。
+- 应用文件(my...App.js)定义了应用模型代码。
+- 一个或多个控制器文件(my...Ctrl.js)定义了控制器代码。
 
 ##### 总结-它是如何工作的呢？
-ng-app 指令位于应用的根元素下。
-对于单页Web应用(single page web application,SPA),应用的根通常为<html>元素。
-一个或多个ng-controller指令定义了应用的控制器。每个控制器有他自己的作用域：：定义的HTML元素。
-AngularJS在HTML DOMContentLoaded 事件中自动开始。如果找到ng-app指令，AngularJS载入指令中的模块，并将ng-app作为应用的根进行编译。应用的根可以是整个页面，或者页面的一小部分，如果是一小部分会更快编译和执行。
+- ng-app 指令位于应用的根元素下。
+- 对于单页Web应用(single page web application,SPA),应用的根通常为<html>元素。
+- 一个或多个ng-controller指令定义了应用的控制器。每个控制器有他自己的作用域：：定义的HTML元素。
+- AngularJS在HTML DOMContentLoaded 事件中自动开始。如果找到ng-app指令，AngularJS载入指令中的模块，并将ng-app作为应用的根进行编译。应用的根可以是整个页面，或者页面的一小部分，如果是一小部分会更快编译和执行。
+
+
+## demo20: angularJS 简单应用-我的购物车
+
+[source](https://github.com/ChengYiFan/angularJS/tree/master/demo20/index.html)
+
+```html
+<html lang="en" ng-app="cart">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车示例</title>
+	<script src="../js/angular-1.4.6-min.js"></script>
+</head>
+<body ng-controller='CartController'>
+	<h1>我的订单</h1>
+	<div ng-repeat="item in items">
+		<span>{{item.title}}</span>
+		<input type="text" ng-model="item.quantity"/>
+		<span>{{item.price | currency}}</span>
+		<span>{{item.price* item.quantity | currency}}</span>
+		<button ng-click="remove($index)">删除</button>
+	</div>
+	<script>
+		var app = angular.module('cart',[]);
+		app.controller('CartController',function($scope){
+			$scope.items = [{
+				title : 'Paint pots',
+				quantity : 8,
+				price : 3.95
+			},{
+				title : 'Polka dots',
+				quantity : 17,
+				price : 12.95
+			},{
+				title : 'Pebbles',
+				quantity : 5,
+				price : 6.95
+			}];
+			$scope.remove = function(index){
+				$scope.items.splice(index,1);
+			}
+		});
+	</script>
+</body>
+</html>
+```
+
+##### 应用剖析
+
+不像典型的库按照你喜欢的筛选函数，Angular中的一切都是被设计用于合作的套件。
+
+任何应用使用Angular必须做两件事：
+
+1. 加载angular.js
+1. 使用ng-app 告知Angular 管理哪一部分的DOM
+
+模型 视图 控制器（MVC）
+
+* 模型中包含了代表应用当前状态的数据
+* 视图显示了这些数据
+* 控制器管理这些模型和视图的关系
+
+使用对象属性，或者只是原型包含的数据来创建模型。而视图，可以通过写一个模板作为HTML页面，创建视图层，然后用模型中的数据合并它。控制器是一些类或者是你写的类型告知Angular哪个对象或者原型通过将他们指定到$scope对象传递到控制器填充模型。
+
+模板和数据绑定
+
+Angular模板的基本启动流程就像这样：
+1. 用户请求应用的第一页面。
+1. 用户的浏览器发出一个HTTP链接到你的服务器，加载包含模板的index.html页面。
+1. Angular加载到页面，等待页面完全加载完成，然后寻找ng-app 定义模板的边界。
+1. Angular经过模板寻找标示符和捆绑。这样的结果是监听器和DOM操作完成了注册，同时从服务器查询初始化数据。这块工作的最终结果是应用完成了自举。
+1. 你连接到服务器按需加载你额外需要展示给用户的数据。
+
