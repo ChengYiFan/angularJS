@@ -1034,25 +1034,33 @@ http://runoob.com/#/third
 		<span>{{item.price* item.quantity | currency}}</span>
 		<button ng-click="remove($index)">删除</button>
 	</div>
+	<div>总价：{{bill.total | currency}}</div>
+	<div>折扣：{{bill.discount | currency}}</div>
+	<div>合计：{{bill.subtotal | currency }}</div>
 	<script>
 		var app = angular.module('cart',[]);
 		app.controller('CartController',function($scope){
+			$scope.bill = {discount: 0};
 			$scope.items = [{
-				title : 'Paint pots',
-				quantity : 8,
-				price : 3.95
+				title : 'Paint pots', quantity : 8, price : 3.95
 			},{
-				title : 'Polka dots',
-				quantity : 17,
-				price : 12.95
+				title : 'Polka dots', quantity : 17,price : 12.95
 			},{
-				title : 'Pebbles',
-				quantity : 5,
-				price : 6.95
+				title : 'Pebbles', quantity : 5, price : 6.95
 			}];
 			$scope.remove = function(index){
 				$scope.items.splice(index,1);
-			}
+			};
+			var calculateTotals = function(){
+				var total = 0;
+				for(var i = 0, len = $scope.items.length; i < len; i++){
+					total = total + $scope.items[i].price * $scope.items[i].quantity;
+				}
+				$scope.bill.total = total;
+				$scope.bill.discount = total > 100 ? 10 : 0;
+				$scope.bill.subtotal = total - $scope.bill.discount;
+			};
+			$scope.$watch('itmes', calculateTotals,true);
 		});
 	</script>
 </body>
